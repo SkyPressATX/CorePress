@@ -18,7 +18,7 @@ refresh: local-refresh file-perms clean
 local-up:
 	@echo
 	# Starting containers with docker-compose up -d
-	docker-compse up -d
+	docker-compose up -d
 	@echo
 	# Started
 
