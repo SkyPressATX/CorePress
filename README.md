@@ -1,5 +1,5 @@
 # Local WordPress Development Kit
-**By SkyPress**
+[**By SkyPress**](https://skypress.io)
 
 _Please feel free to fork or clone this development kit to get started developing your own WordPress website_
 
