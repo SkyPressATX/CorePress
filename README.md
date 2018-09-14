@@ -1,5 +1,7 @@
-# wp-dev-kit
-Local WordPress Development Kit
+# Local WordPress Development Kit
+**By SkyPress**
+
+_Please feel free to fork or clone this development kit to get started developing your own WordPress website_
 
 ## Prerequisites
 In order to use the **WP Dev Kit**, you will need the following installed on your local machine:
