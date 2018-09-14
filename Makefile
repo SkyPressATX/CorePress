@@ -6,14 +6,14 @@ default: lint
 
 lint: lint-php
 clean: file-perms wp-clean
-install: composer-install file-perms wp-clean
+install: composer-install file-perms
 update: composer-update
-start: local-start file-perms
+start: local-start
 stop: local-stop
 restart: stop start
-up: local-up file-perms clean
+up: local-up
 down: local-down
-refresh: local-refresh file-perms clean
+refresh: local-refresh
 
 local-up:
 	@echo

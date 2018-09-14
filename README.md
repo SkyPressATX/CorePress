@@ -44,6 +44,10 @@ alias nginx-proxy=docker run -d -p 80:80 --network=nginxproxy --restart=unless-s
 ```
 make up
 ```
+Wait for the WordPress files to populate, then:
+```
+make clean
+```
 Then visit [http://wp-dev.local/](http://wp-dev.local) to start the famous 5 minute install.
 
 ## Docker Compose
@@ -97,14 +101,14 @@ The most useful commands are:
 * **lint** - _Lint PHP files found in_ `wp-content/plugins` _and_ `wp-content/themes`
 * **clean** - _Remove many themes and plugins included with a vanilla WordPress install_
 * **file-perms** - _Sets all permissions of all directories and files in this project to 775 and 664_
-* **install** - _Runs_ `composer install -o && file-perms && clean`
+* **install** - _Runs_ `composer install -o && file-perms`
 * **update** - _Runs_ `composer update -o`
-* **start** - _Runs_ `docker-compose start && file-perms` _to start the containers from a previously suspended state_
+* **start** - _Runs_ `docker-compose start` _to start the containers from a previously suspended state_
 * **stop** - _Runs_ `docker-compose stop` _to suspend the containers_
 * **restart** - _Runs_ `docker-compose stop && docker-compose start` _to restart the containers_
-* **up** - _Runs_ `docker-compose up -d && file-perms && clean` _to create a fresh instance of the containers_
+* **up** - _Runs_ `docker-compose up -d` _to create a fresh instance of the containers_
 * **down** - _Runs_ `docker-compose down` _to power down the containers_
-* **refresh** - _Runs_ `docker-compose down && docker-compose up -d && file-perms && clean` _to fully refresh the containers_
+* **refresh** - _Runs_ `docker-compose down && docker-compose up -d` _to fully refresh the containers_
 
 _Note:_ `make refresh` _will not destroy the mounted volumes (database) and is safe to use without loosing data. However, it will re-install a vanilla version of WordPress; plugins, themes, and all._
 
