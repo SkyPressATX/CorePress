@@ -11,9 +11,9 @@ update: composer-update
 start: local-start file-perms
 stop: local-stop
 restart: stop start
-up: local-up clean
+up: local-up file-perms clean
 down: local-down
-refresh: local-refresh clean
+refresh: local-refresh file-perms clean
 
 local-up:
 	@echo
