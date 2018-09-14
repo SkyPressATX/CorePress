@@ -1,0 +1,14 @@
+{
+    "name": "skypress/wp-dev-kit",
+    "description": "Local WordPress Development Kit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben Moore",
+            "email": "bmo@skypress.io"
+        }
+    ],
+    "config": {
+      "vendor-dir": "wp-content/vendor"
+    }
+}
