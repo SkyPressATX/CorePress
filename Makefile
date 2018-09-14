@@ -11,14 +11,14 @@ update: composer-update
 start: local-start file-perms
 stop: local-stop
 restart: stop start
-up: local-up file-perms clean
+up: local-up
 down: local-down
 refresh: local-refresh file-perms clean
 
 local-up:
 	@echo
 	# Starting containers with docker-compose up -d
-	docker-compse up -d
+	docker-compose up -d
 	@echo
 	# Started
 

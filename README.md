@@ -44,6 +44,10 @@ alias nginx-proxy=docker run -d -p 80:80 --network=nginxproxy --restart=unless-s
 ```
 make up
 ```
+Wait for the WordPress files to populate, then:
+```
+make clean
+```
 Then visit [http://wp-dev.local/](http://wp-dev.local) to start the famous 5 minute install.
 
 ## Docker Compose
