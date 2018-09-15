@@ -1,6 +1,8 @@
 PHP_IMAGE	:= wpengine/php
 PHP_VERSION := 7.2
 COMPOSER_IMAGE := skypress/wp-composer
+USER_NAME := www-data
+USER_GROUP := www-data
 
 default: lint
 
@@ -83,6 +85,7 @@ composer-install:
 	@docker run --rm \
 		--volume $(PWD):/app \
 		--workdir /app \
+		--user $(USER_NAME):$(USER_GROUP) \
 		$(COMPOSER_IMAGE):latest \
 			composer install -o
 	@echo
@@ -94,6 +97,7 @@ composer-update:
 	@docker run --rm \
 		--volume $(PWD):/app \
 		--workdir /app \
+		--user $(USER_NAME):$(USER_GROUP) \
 		$(COMPOSER_IMAGE):latest \
 			composer update -o
 	@echo
