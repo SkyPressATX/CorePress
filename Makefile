@@ -1,21 +1,24 @@
 PHP_IMAGE	:= wpengine/php
 PHP_VERSION := 7.2
 COMPOSER_IMAGE := skypress/wp-composer
+COMPOSER_VERSION := latest
 USER_NAME := www-data
 USER_GROUP := www-data
+CURRENT_USER := $(shell whoami)
 
 default: lint
 
 lint: lint-php
-clean: file-perms wp-clean
-install: composer-install file-perms
-update: composer-update
+clean: file-own file-perms wp-clean
+install: composer-install file-own file-perms
+update: composer-update file-own file-perms
 start: local-start
 stop: local-stop
 restart: stop start
 up: local-up
 down: local-down
 refresh: local-refresh
+own: file-own file-perms
 
 local-up:
 	@echo
@@ -79,14 +82,19 @@ file-perms:
 	@echo
 	# File permissions set
 
+file-own:
+	@echo
+	# Changing ownership project files
+	sudo chown -R $(CURRENT_USER):$(USER_GROUP) $(PWD)
+	@echo
+	# Ownsership set
+
 composer-install:
 	@echo
 	# Installing packages from composer.json
 	@docker run --rm \
 		--volume $(PWD):/app \
-		--workdir /app \
-		--user $(USER_NAME):$(USER_GROUP) \
-		$(COMPOSER_IMAGE):latest \
+		$(COMPOSER_IMAGE):$(COMPOSER_VERSION) \
 			composer install -o
 	@echo
 	# Finished install packages
@@ -96,9 +104,7 @@ composer-update:
 	# Installing packages from composer.json
 	@docker run --rm \
 		--volume $(PWD):/app \
-		--workdir /app \
-		--user $(USER_NAME):$(USER_GROUP) \
-		$(COMPOSER_IMAGE):latest \
+		$(COMPOSER_IMAGE):$(COMPOSER_VERSION) \
 			composer update -o
 	@echo
 	# Finished install packages
