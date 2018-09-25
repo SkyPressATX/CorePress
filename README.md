@@ -101,18 +101,20 @@ The most useful commands are:
 * **lint** - _Lint PHP files found in_ `wp-content/plugins` _and_ `wp-content/themes`
 * **clean** - _Remove many themes and plugins included with a vanilla WordPress install_
 * **file-perms** - _Sets all permissions of all directories and files in this project to 775 and 664_
-* **install** - _Runs_ `composer install -o && file-perms`
-* **update** - _Runs_ `composer update -o`
+* **file-own** _Sets Files User to current user (_`whoami`_) and Group to_ `USER_GROUP` _(www-data by default)_
+* **install** - _Runs_ `composer install -o && file-own && file-perms`
+* **update** - _Runs_ `composer update -o && file-own && file-perms`
 * **start** - _Runs_ `docker-compose start` _to start the containers from a previously suspended state_
 * **stop** - _Runs_ `docker-compose stop` _to suspend the containers_
 * **restart** - _Runs_ `docker-compose stop && docker-compose start` _to restart the containers_
 * **up** - _Runs_ `docker-compose up -d` _to create a fresh instance of the containers_
 * **down** - _Runs_ `docker-compose down` _to power down the containers_
 * **refresh** - _Runs_ `docker-compose down && docker-compose up -d` _to fully refresh the containers_
+* **own** - _Runs_ `file-own && file-perms` _to ensure User, Groups, and File Perms are properly set_
 
 _Note:_ `make refresh` _will not destroy the mounted volumes (database) and is safe to use without loosing data. However, it will re-install a vanilla version of WordPress; plugins, themes, and all._
 
-There are **Three** variables exposed in the `Makefile`: `PHP_IMAGE`, `PHP_VERSION`, and `COMPOSER_IMAGE`. Generally, you won't need to adjust these. But, for example if you would like to `lint` your project against a different version of PHP, you can alter these variables:
+There are several variables exposed in the `Makefile`: `PHP_IMAGE`, `PHP_VERSION`, `COMPOSER_IMAGE`, `COMPOSER_VERSION`, `USER_NAME`, `USER_GROUP`, and `CURRENT_USER`. Generally, you won't need to adjust these. But, for example if you would like to `lint` your project against a different version of PHP, you can alter these variables:
 
 ```
 make lint PHP_VERSION=5.6
