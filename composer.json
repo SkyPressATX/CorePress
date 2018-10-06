@@ -1,6 +1,6 @@
 {
-    "name": "skypress/wp-dev-kit",
-    "description": "Local WordPress Development Kit",
+    "name": "skypress/corepress",
+    "description": "CorePress Project",
     "license": "MIT",
     "authors": [
         {
